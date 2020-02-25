@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registering Component locally and globally</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-cmp> </my-cmp>
+        <hr>
+        <my-cmp> </my-cmp>
+    </div>
+
+
+    <!--  this app2 is also using same component -->
+    <div id="app2">
+        <my-cmp> </my-cmp>
+
+     
+        <hr>
+        <my-cmp> </my-cmp>
+    </div>
+
+
+    <script>
+
+
+        // component stored in the variable
+        var cmp = {
+            data: {
+                status: "Critical"
+            },
+            data: function () {
+                return {
+                    status: "clear"
+                }
+            },
+            template: `<p> Server Status: {{ status}}  (<button @click="changeStatus">Chnage Me</button>)</p>`,
+            methods: {
+                changeStatus: function () {
+                    this.status = "Normal"
+                }
+            }
+        };
+
+
+
+        //passed only in this vue
+        //see output only u will see this changes only in this vue instance
+        new Vue({
+            el: "#app",
+            components: {
+
+                // registering locally : components
+                //how to set globally : see prev example
+                'my-cmp': cmp
+            }
+        });
+
+
+        //created second vue instance
+
+        new Vue({
+            el: "#app2",
+          
+        });
+
+    </script>
+</body>
+
+</html>

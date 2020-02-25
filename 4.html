@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into to components</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-cmp>
+        </my-cmp>
+        <hr>
+        <my-cmp>
+        </my-cmp>
+    </div>
+
+   
+    <script>
+
+
+///created out side data object
+var mydata= { status : " i am text passed by components and in components , data is passed by outdise object"};
+
+        Vue.component('my-cmp', {
+            data: {
+                status: "Critical"
+            },
+            data: function () {
+
+                //passed here
+                return mydata;
+            },
+            template: `<p> Server Status: {{ status}}  (<button @click="changeStatus">Chnage Me</button>)</p>`,
+            methods:{
+
+
+//when u click on button it will make chnages on both templates <my-cmp>
+// this is the problem with shared data object
+
+// look a magic in next example
+
+                changeStatus: function(){
+
+                    this.status= " Normal"
+                }
+            }
+        });
+
+// what is issue then we eill discuss in next example
+
+
+
+        new Vue({
+            el: "#app",
+        });
+
+    </script>
+</body>
+
+</html>

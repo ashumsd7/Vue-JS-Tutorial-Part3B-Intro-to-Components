@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into to components</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+<!--  here u will get print that template -->
+    </div>
+
+    <hr>
+
+
+    <div id="app">
+<!--  but that template will not be printed here,
+if u are thinking it is beacause of id is same, chnage it to class and it will also not work then too -->
+   <!--  how we will overcome with this problem look at next ex. 2.html -->
+</div>
+
+    <script>
+
+        
+        new Vue({
+
+            el: "#app",
+            data: {
+                status: "Critical"
+            },
+ // when we are using template here , we can't repeat tghis code again and again : look above description
+            template: `<p> Server Status: {{ status}}</p>`
+
+        });
+
+    </script>
+</body>
+</html>

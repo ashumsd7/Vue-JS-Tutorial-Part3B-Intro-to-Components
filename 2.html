@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into to components</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!--  here u will get print that template -->
+
+        <my-cmp>
+        </my-cmp>
+        <my-cmp>
+        </my-cmp>
+
+        <my-cmp>
+        </my-cmp>
+        <my-cmp>
+        </my-cmp>
+    </div>
+
+    <hr>
+
+
+
+
+    <script>
+
+        //we are using component to reuse our code as template
+        //components extends vue root vue instance, we will get error if we use 
+        //data as object in components
+        // it is fine to use data as obbject in vue instance
+        // use as function in component
+        Vue.component('my-cmp', {
+            // data: {
+            //     status: "Critical"
+            // },
+
+            //using data as function to get o/p
+            data: function () {
+                return {
+                    status: "Critical By Component"
+                }
+            },
+            template: `<p> Server Status: {{ status}}</p>`
+
+            //here u can write methods , wath , computer section toooo
+
+        });
+
+        //vue instance
+
+        new Vue({
+
+            el: "#app",           
+
+        });
+
+    </script>
+</body>
+
+</html>

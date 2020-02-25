@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registering Component locally and globally</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-cmp> </my-cmp>
+        <hr>
+        <my-cmp>  </my-cmp>
+    </div>
+
+
+<!--  this app2 is also using same component -->
+    <div id="app2">
+        <my-cmp>   </my-cmp>
+        <hr>
+        <my-cmp>  </my-cmp>
+    </div>
+
+   
+    <script>
+
+
+// when we write like this Vue. component we set or declare it globally
+//now in next example we will store it inot a variable
+//
+        Vue.component('my-cmp', {
+            data: {
+                status: "Critical"
+            },
+            data: function () {
+                return {
+                    status: "clear"
+                }
+            },
+            template: `<p> Server Status: {{ status}}  <button @click="changeStatus">Chnage Me</button>)</p>`,
+            methods:{
+
+
+                changeStatus: function(){ 
+                    this.status= "Normal"
+                }
+            }
+        });
+
+
+
+
+        new Vue({
+            el: "#app",
+        });
+
+
+        //created second vue instance
+
+        new Vue({
+            el: "#app2",
+        });
+
+    </script>
+</body>
+
+</html>
